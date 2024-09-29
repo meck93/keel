@@ -3,14 +3,14 @@ GIT_REVISION	= $(shell git rev-parse --short HEAD)
 VERSION		?= $(shell git describe --tags --abbrev=0)
 
 LDFLAGS		+= -linkmode external -extldflags -static
-LDFLAGS		+= -X github.com/keel-hq/keel/version.Version=$(VERSION)
-LDFLAGS		+= -X github.com/keel-hq/keel/version.Revision=$(GIT_REVISION)
-LDFLAGS		+= -X github.com/keel-hq/keel/version.BuildDate=$(JOBDATE)
+LDFLAGS		+= -X github.com/meck93/keel/version.Version=$(VERSION)
+LDFLAGS		+= -X github.com/meck93/keel/version.Revision=$(GIT_REVISION)
+LDFLAGS		+= -X github.com/meck93/keel/version.BuildDate=$(JOBDATE)
 
 ARMFLAGS		+= -a -v
-ARMFLAGS		+= -X github.com/keel-hq/keel/version.Version=$(VERSION)
-ARMFLAGS		+= -X github.com/keel-hq/keel/version.Revision=$(GIT_REVISION)
-ARMFLAGS		+= -X github.com/keel-hq/keel/version.BuildDate=$(JOBDATE)
+ARMFLAGS		+= -X github.com/meck93/keel/version.Version=$(VERSION)
+ARMFLAGS		+= -X github.com/meck93/keel/version.Revision=$(GIT_REVISION)
+ARMFLAGS		+= -X github.com/meck93/keel/version.BuildDate=$(JOBDATE)
 
 .PHONY: release
 
@@ -61,8 +61,8 @@ build:
 
 install:
 	@echo "++ Installing keel"
-	# CGO_ENABLED=0 GOOS=linux go install -ldflags "$(LDFLAGS)" github.com/keel-hq/keel/cmd/keel	
-	GOOS=linux go install -ldflags "$(LDFLAGS)" github.com/keel-hq/keel/cmd/keel	
+	# CGO_ENABLED=0 GOOS=linux go install -ldflags "$(LDFLAGS)" github.com/meck93/keel/cmd/keel	
+	GOOS=linux go install -ldflags "$(LDFLAGS)" github.com/meck93/keel/cmd/keel	
 
 image:
 	docker build -t keelhq/keel:alpha -f Dockerfile .
@@ -78,7 +78,7 @@ e2e: install
 	cd tests && go test
 
 run:
-	go install github.com/keel-hq/keel/cmd/keel
+	go install github.com/meck93/keel/cmd/keel
 	keel --no-incluster --ui-dir ui/dist
 
 lint-ui:
