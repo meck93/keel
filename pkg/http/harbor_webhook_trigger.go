@@ -6,8 +6,8 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/keel-hq/keel/types"
-	"github.com/keel-hq/keel/util/image"
+	"github.com/meck93/keel/types"
+	"github.com/meck93/keel/util/image"
 
 	"github.com/prometheus/client_golang/prometheus"
 

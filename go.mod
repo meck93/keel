@@ -1,4 +1,4 @@
-module github.com/keel-hq/keel
+module github.com/meck93/keel
 
 go 1.23
 

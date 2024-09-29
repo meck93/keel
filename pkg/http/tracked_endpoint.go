@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/keel-hq/keel/types"
+	"github.com/meck93/keel/types"
 )
 
 type trackedImage struct {

@@ -5,7 +5,7 @@ import (
 	"time"
 
 	"github.com/google/uuid"
-	"github.com/keel-hq/keel/types"
+	"github.com/meck93/keel/types"
 )
 
 // CreateAuditLog - create new audit log entry

@@ -2,7 +2,7 @@
   <div class="footer">
     <div class="links">
       <a
-        href="https://github.com/keel-hq/keel"
+        href="https://github.com/meck93/keel"
         target="_blank"
       >
         <a-icon type="github" />

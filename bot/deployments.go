@@ -4,8 +4,8 @@ import (
 	"bytes"
 	"fmt"
 
-	"github.com/keel-hq/keel/bot/formatter"
-	"github.com/keel-hq/keel/provider/kubernetes"
+	"github.com/meck93/keel/bot/formatter"
+	"github.com/meck93/keel/provider/kubernetes"
 
 	apps_v1 "k8s.io/api/apps/v1"
 

@@ -6,9 +6,9 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/keel-hq/keel/approvals"
-	"github.com/keel-hq/keel/bot/formatter"
-	"github.com/keel-hq/keel/types"
+	"github.com/meck93/keel/approvals"
+	"github.com/meck93/keel/bot/formatter"
+	"github.com/meck93/keel/types"
 
 	log "github.com/sirupsen/logrus"
 )

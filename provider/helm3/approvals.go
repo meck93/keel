@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/keel-hq/keel/pkg/store"
-	"github.com/keel-hq/keel/types"
+	"github.com/meck93/keel/pkg/store"
+	"github.com/meck93/keel/types"
 
 	log "github.com/sirupsen/logrus"
 )

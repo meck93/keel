@@ -5,7 +5,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/keel-hq/keel/types"
+	"github.com/meck93/keel/types"
 )
 
 func (s *TriggerServer) adminAuditLogHandler(resp http.ResponseWriter, req *http.Request) {

@@ -9,9 +9,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/keel-hq/keel/constants"
+	"github.com/meck93/keel/constants"
 
-	"github.com/keel-hq/keel/types"
+	"github.com/meck93/keel/types"
 
 	apps_v1 "k8s.io/api/apps/v1"
 	v1 "k8s.io/api/core/v1"
@@ -148,7 +148,7 @@ func TestWebhooksSemverUpdate(t *testing.T) {
 }
 
 // Test to ensure Keel doesn't try to be tolerant and parse integers as semver versions, for example
-// 45000 shouldn't become 45000.0.0 version (https://github.com/keel-hq/keel/issues/296)
+// 45000 shouldn't become 45000.0.0 version (https://github.com/meck93/keel/issues/296)
 func TestWebhookHighIntegerUpdate(t *testing.T) {
 
 	// stop := make(chan struct{})

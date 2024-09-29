@@ -7,7 +7,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/keel-hq/keel/types"
+	"github.com/meck93/keel/types"
 	"github.com/prometheus/client_golang/prometheus"
 
 	log "github.com/sirupsen/logrus"

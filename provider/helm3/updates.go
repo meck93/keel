@@ -1,9 +1,9 @@
 package helm3
 
 import (
-	"github.com/keel-hq/keel/internal/policy"
-	"github.com/keel-hq/keel/types"
-	"github.com/keel-hq/keel/util/image"
+	"github.com/meck93/keel/internal/policy"
+	"github.com/meck93/keel/types"
+	"github.com/meck93/keel/util/image"
 
 	hapi_chart "helm.sh/helm/v3/pkg/chart"
 

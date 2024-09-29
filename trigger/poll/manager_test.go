@@ -7,17 +7,17 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/keel-hq/keel/approvals"
-	"github.com/keel-hq/keel/pkg/store/sql"
+	"github.com/meck93/keel/approvals"
+	"github.com/meck93/keel/pkg/store/sql"
 
-	// "github.com/keel-hq/keel/cache/memory"
-	"github.com/keel-hq/keel/provider"
-	"github.com/keel-hq/keel/registry"
-	"github.com/keel-hq/keel/types"
-	"github.com/keel-hq/keel/util/image"
+	// "github.com/meck93/keel/cache/memory"
+	"github.com/meck93/keel/provider"
+	"github.com/meck93/keel/registry"
+	"github.com/meck93/keel/types"
+	"github.com/meck93/keel/util/image"
 
-	// "github.com/keel-hq/keel/extension/credentialshelper"
-	_ "github.com/keel-hq/keel/extension/credentialshelper/aws"
+	// "github.com/meck93/keel/extension/credentialshelper"
+	_ "github.com/meck93/keel/extension/credentialshelper/aws"
 
 	"testing"
 )

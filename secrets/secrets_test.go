@@ -5,9 +5,9 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/keel-hq/keel/types"
-	"github.com/keel-hq/keel/util/image"
-	testutil "github.com/keel-hq/keel/util/testing"
+	"github.com/meck93/keel/types"
+	"github.com/meck93/keel/util/image"
+	testutil "github.com/meck93/keel/util/testing"
 	v1 "k8s.io/api/core/v1"
 )
 

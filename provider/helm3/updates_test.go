@@ -4,8 +4,8 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/keel-hq/keel/internal/policy"
-	"github.com/keel-hq/keel/types"
+	"github.com/meck93/keel/internal/policy"
+	"github.com/meck93/keel/types"
 
 	hapi_chart "helm.sh/helm/v3/pkg/chart"
 	"helm.sh/helm/v3/pkg/chartutil"
@@ -44,7 +44,7 @@ keel:
   images:
     - repository: image.repository
       tag: image.tag
-      releaseNotes: https://github.com/keel-hq/keel/releases
+      releaseNotes: https://github.com/meck93/keel/releases
 
 `
 
@@ -159,7 +159,7 @@ keel:
 				Values:         map[string]string{"image.tag": "1.2.0"},
 				CurrentVersion: "1.1.0",
 				NewVersion:     "1.2.0",
-				ReleaseNotes:   []string{"https://github.com/keel-hq/keel/releases"},
+				ReleaseNotes:   []string{"https://github.com/meck93/keel/releases"},
 				Config: &KeelChartConfig{
 					Policy:          "force",
 					MatchPreRelease: true,
@@ -168,7 +168,7 @@ keel:
 						{
 							RepositoryPath: "image.repository",
 							TagPath:        "image.tag",
-							ReleaseNotes:   "https://github.com/keel-hq/keel/releases",
+							ReleaseNotes:   "https://github.com/meck93/keel/releases",
 						},
 					},
 					Plc: policy.NewForcePolicy(false),

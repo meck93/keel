@@ -6,7 +6,7 @@ import (
 	"net/http"
 
 	request "github.com/dgrijalva/jwt-go/request"
-	"github.com/keel-hq/keel/pkg/auth"
+	"github.com/meck93/keel/pkg/auth"
 	log "github.com/sirupsen/logrus"
 )
 

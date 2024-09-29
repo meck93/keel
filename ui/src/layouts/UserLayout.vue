@@ -16,7 +16,7 @@
 
       <div class="footer">
         <div class="links">
-          <a href="https://github.com/keel-hq/keel" target="_blank" rel="noopener"><a-icon type="github" /> GitHub</a>
+          <a href="https://github.com/meck93/keel" target="_blank" rel="noopener"><a-icon type="github" /> GitHub</a>
         </div>
         <div class="copyright">
           Copyright &copy; 2019 AppScension Ltd.

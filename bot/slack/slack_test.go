@@ -10,20 +10,20 @@ import (
 
 	"github.com/slack-go/slack"
 
-	"github.com/keel-hq/keel/extension/approval"
-	"github.com/keel-hq/keel/pkg/store/sql"
-	"github.com/keel-hq/keel/provider/kubernetes"
+	"github.com/meck93/keel/extension/approval"
+	"github.com/meck93/keel/pkg/store/sql"
+	"github.com/meck93/keel/provider/kubernetes"
 
-	"github.com/keel-hq/keel/approvals"
-	b "github.com/keel-hq/keel/bot"
+	"github.com/meck93/keel/approvals"
+	b "github.com/meck93/keel/bot"
 
-	// "github.com/keel-hq/keel/cache/memory"
-	"github.com/keel-hq/keel/constants"
-	"github.com/keel-hq/keel/types"
+	// "github.com/meck93/keel/cache/memory"
+	"github.com/meck93/keel/constants"
+	"github.com/meck93/keel/types"
 
 	"testing"
 
-	testutil "github.com/keel-hq/keel/util/testing"
+	testutil "github.com/meck93/keel/util/testing"
 )
 
 var botMessagesChannel chan *b.BotMessage

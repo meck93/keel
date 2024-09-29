@@ -3,16 +3,16 @@
 </p>
 
 <p align="center">
-  <a href="https://goreportcard.com/report/github.com/keel-hq/keel">
-    <img src="https://goreportcard.com/badge/github.com/keel-hq/keel" alt="Go Report">
+  <a href="https://goreportcard.com/report/github.com/meck93/keel">
+    <img src="https://goreportcard.com/badge/github.com/meck93/keel" alt="Go Report">
   </a>
   
   <a href="https://img.shields.io/docker/pulls/keelhq/keel.svg">
     <img src="https://img.shields.io/docker/pulls/keelhq/keel.svg" alt="Docker Pulls">
   </a>
 
-  <a href="https://drone-kr.webrelay.io/keel-hq/keel">
-    <img src="https://drone-kr.webrelay.io/api/badges/keel-hq/keel/status.svg" alt="Drone Status">
+  <a href="https://drone-kr.webrelay.io/meck93/keel">
+    <img src="https://drone-kr.webrelay.io/api/badges/meck93/keel/status.svg" alt="Drone Status">
   </a>
 </p>
 
@@ -82,7 +82,7 @@ To install for Helm v3, set helmProvider.version="v3" (default is "v2"):
 helm install keel keel/keel --set helmProvider.version="v3"
 ```
 
-That's it, see [Configuration](https://github.com/keel-hq/keel#configuration) section now.
+That's it, see [Configuration](https://github.com/meck93/keel#configuration) section now.
 
 ### Quick Start
 
@@ -135,7 +135,7 @@ Documentation is viewable on the Keel Website:
 
 ### Contributing
 
-Before starting to work on some big or medium features - raise an issue [here](https://github.com/keel-hq/keel/issues) so we can coordinate our efforts.
+Before starting to work on some big or medium features - raise an issue [here](https://github.com/meck93/keel/issues) so we can coordinate our efforts.
 
 We use pull requests, so:
 

@@ -2,12 +2,12 @@ package slack
 
 import (
 	"fmt"
-	"github.com/keel-hq/keel/bot"
+	"github.com/meck93/keel/bot"
 	log "github.com/sirupsen/logrus"
 	"strings"
 	"unicode"
 
-	"github.com/keel-hq/keel/types"
+	"github.com/meck93/keel/types"
 	"github.com/slack-go/slack"
 )
 

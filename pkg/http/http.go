@@ -15,14 +15,14 @@ import (
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 	"github.com/urfave/negroni"
 
-	"github.com/keel-hq/keel/approvals"
-	"github.com/keel-hq/keel/internal/k8s"
-	"github.com/keel-hq/keel/pkg/auth"
-	"github.com/keel-hq/keel/pkg/store"
-	"github.com/keel-hq/keel/provider"
-	"github.com/keel-hq/keel/provider/kubernetes"
-	"github.com/keel-hq/keel/types"
-	"github.com/keel-hq/keel/version"
+	"github.com/meck93/keel/approvals"
+	"github.com/meck93/keel/internal/k8s"
+	"github.com/meck93/keel/pkg/auth"
+	"github.com/meck93/keel/pkg/store"
+	"github.com/meck93/keel/provider"
+	"github.com/meck93/keel/provider/kubernetes"
+	"github.com/meck93/keel/types"
+	"github.com/meck93/keel/version"
 
 	log "github.com/sirupsen/logrus"
 )

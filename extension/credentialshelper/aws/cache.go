@@ -5,7 +5,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/keel-hq/keel/types"
+	"github.com/meck93/keel/types"
 )
 
 type item struct {

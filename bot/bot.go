@@ -6,9 +6,9 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/keel-hq/keel/approvals"
-	"github.com/keel-hq/keel/provider/kubernetes"
-	"github.com/keel-hq/keel/types"
+	"github.com/meck93/keel/approvals"
+	"github.com/meck93/keel/provider/kubernetes"
+	"github.com/meck93/keel/types"
 
 	log "github.com/sirupsen/logrus"
 )

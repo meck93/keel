@@ -1,6 +1,6 @@
 FROM golang:1.23.1
-COPY . /go/src/github.com/keel-hq/keel
-WORKDIR /go/src/github.com/keel-hq/keel
+COPY . /go/src/github.com/meck93/keel
+WORKDIR /go/src/github.com/meck93/keel
 RUN make install
 
 FROM node:16-alpine

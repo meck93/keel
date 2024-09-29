@@ -5,10 +5,10 @@ import (
 	"strings"
 
 	"github.com/Masterminds/semver"
-	"github.com/keel-hq/keel/extension/credentialshelper"
-	"github.com/keel-hq/keel/provider"
-	"github.com/keel-hq/keel/registry"
-	"github.com/keel-hq/keel/types"
+	"github.com/meck93/keel/extension/credentialshelper"
+	"github.com/meck93/keel/provider"
+	"github.com/meck93/keel/registry"
+	"github.com/meck93/keel/types"
 
 	"github.com/prometheus/client_golang/prometheus"
 
