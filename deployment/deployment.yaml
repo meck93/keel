@@ -116,6 +116,8 @@ spec:
         app: keel
     spec:
       serviceAccountName: keel
+      imagePullSecrets:
+        - name: ghcr-cred
       containers:
         - name: keel
           image: ghcr.io/meck93/keel:latest
