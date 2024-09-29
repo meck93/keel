@@ -6,14 +6,14 @@ import (
 	"strings"
 	"time"
 
-	"github.com/meck93/keel/approvals"
-	"github.com/meck93/keel/internal/policy"
-	"github.com/meck93/keel/types"
-	"github.com/meck93/keel/util/image"
+	"github.com/keel-hq/keel/approvals"
+	"github.com/keel-hq/keel/internal/policy"
+	"github.com/keel-hq/keel/types"
+	"github.com/keel-hq/keel/util/image"
 
 	"github.com/prometheus/client_golang/prometheus"
 
-	"github.com/meck93/keel/extension/notification"
+	"github.com/keel-hq/keel/extension/notification"
 
 	log "github.com/sirupsen/logrus"
 	"sigs.k8s.io/yaml"

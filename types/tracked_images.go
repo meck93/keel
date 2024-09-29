@@ -3,7 +3,7 @@ package types
 import (
 	"fmt"
 
-	"github.com/meck93/keel/util/image"
+	"github.com/keel-hq/keel/util/image"
 )
 
 // Credentials - registry credentials

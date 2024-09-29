@@ -8,11 +8,11 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/meck93/keel/approvals"
-	"github.com/meck93/keel/extension/notification"
-	"github.com/meck93/keel/internal/policy"
-	"github.com/meck93/keel/pkg/store/sql"
-	"github.com/meck93/keel/types"
+	"github.com/keel-hq/keel/approvals"
+	"github.com/keel-hq/keel/extension/notification"
+	"github.com/keel-hq/keel/internal/policy"
+	"github.com/keel-hq/keel/pkg/store/sql"
+	"github.com/keel-hq/keel/types"
 	"sigs.k8s.io/yaml"
 
 	"helm.sh/helm/v3/pkg/chart"

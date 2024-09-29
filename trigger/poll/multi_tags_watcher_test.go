@@ -10,12 +10,12 @@ import (
 	"github.com/Masterminds/semver"
 	"github.com/stretchr/testify/assert"
 
-	"github.com/meck93/keel/approvals"
-	"github.com/meck93/keel/extension/credentialshelper"
-	"github.com/meck93/keel/internal/policy"
-	"github.com/meck93/keel/provider"
-	"github.com/meck93/keel/types"
-	"github.com/meck93/keel/util/image"
+	"github.com/keel-hq/keel/approvals"
+	"github.com/keel-hq/keel/extension/credentialshelper"
+	"github.com/keel-hq/keel/internal/policy"
+	"github.com/keel-hq/keel/provider"
+	"github.com/keel-hq/keel/types"
+	"github.com/keel-hq/keel/util/image"
 )
 
 func TestWatchMultipleTagsWithSemver(t *testing.T) {

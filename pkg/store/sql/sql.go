@@ -6,7 +6,7 @@ import (
 	"time"
 
 	"github.com/jinzhu/gorm"
-	"github.com/meck93/keel/types"
+	"github.com/keel-hq/keel/types"
 
 	// importing sqlite driver
 	_ "github.com/jinzhu/gorm/dialects/sqlite"

@@ -6,7 +6,7 @@ import (
 	"strings"
 
 	"github.com/Masterminds/semver"
-	"github.com/meck93/keel/types"
+	"github.com/keel-hq/keel/types"
 
 	log "github.com/sirupsen/logrus"
 )

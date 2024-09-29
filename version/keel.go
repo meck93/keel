@@ -3,7 +3,7 @@ package version
 import (
 	"runtime"
 
-	"github.com/meck93/keel/types"
+	"github.com/keel-hq/keel/types"
 )
 
 // Generic tool info

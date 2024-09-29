@@ -4,8 +4,8 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/meck93/keel/types"
-	"github.com/meck93/keel/util/image"
+	"github.com/keel-hq/keel/types"
+	"github.com/keel-hq/keel/util/image"
 
 	"helm.sh/helm/v3/pkg/chartutil"
 

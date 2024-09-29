@@ -4,9 +4,9 @@ import (
 	"os"
 	"testing"
 
-	"github.com/meck93/keel/registry"
-	"github.com/meck93/keel/types"
-	"github.com/meck93/keel/util/image"
+	"github.com/keel-hq/keel/registry"
+	"github.com/keel-hq/keel/types"
+	"github.com/keel-hq/keel/util/image"
 )
 
 func TestAWS(t *testing.T) {

@@ -9,8 +9,8 @@ import (
         "strings"
     
         "cloud.google.com/go/storage"
-        "github.com/meck93/keel/extension/credentialshelper"
-        "github.com/meck93/keel/types"
+        "github.com/keel-hq/keel/extension/credentialshelper"
+        "github.com/keel-hq/keel/types"
         "golang.org/x/oauth2/google"
 )
 

@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/meck93/keel/types"
+	"github.com/keel-hq/keel/types"
 )
 
 type fakeSender struct {

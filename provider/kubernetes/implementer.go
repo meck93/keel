@@ -4,7 +4,7 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/meck93/keel/internal/k8s"
+	"github.com/keel-hq/keel/internal/k8s"
 
 	apps_v1 "k8s.io/api/apps/v1"
 	batch_v1 "k8s.io/api/batch/v1"

@@ -1,7 +1,7 @@
 package policies
 
 import (
-	"github.com/meck93/keel/types"
+	"github.com/keel-hq/keel/types"
 )
 
 // GetTriggerPolicy - checks for trigger label, if not set - returns

@@ -8,12 +8,12 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/meck93/keel/approvals"
-	"github.com/meck93/keel/provider"
-	"github.com/meck93/keel/types"
+	"github.com/keel-hq/keel/approvals"
+	"github.com/keel-hq/keel/provider"
+	"github.com/keel-hq/keel/types"
 
-	"github.com/meck93/keel/pkg/auth"
-	"github.com/meck93/keel/pkg/store/sql"
+	"github.com/keel-hq/keel/pkg/auth"
+	"github.com/keel-hq/keel/pkg/store/sql"
 
 	"net/http/httptest"
 	"testing"

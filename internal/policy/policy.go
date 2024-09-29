@@ -3,7 +3,7 @@ package policy
 import (
 	"strings"
 
-	"github.com/meck93/keel/types"
+	"github.com/keel-hq/keel/types"
 
 	log "github.com/sirupsen/logrus"
 )

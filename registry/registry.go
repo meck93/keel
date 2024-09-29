@@ -7,7 +7,7 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/meck93/keel/registry/docker"
+	"github.com/keel-hq/keel/registry/docker"
 
 	log "github.com/sirupsen/logrus"
 )
@@ -100,7 +100,7 @@ func (c *DefaultClient) getRegistryClient(registryAddress, username, password st
 // Get - get repository
 func (c *DefaultClient) Get(opts Opts) (*Repository, error) {
 
-	// fallback to HTTP if the registry doesn't speak HTTPS https://github.com/meck93/keel/issues/331
+	// fallback to HTTP if the registry doesn't speak HTTPS https://github.com/keel-hq/keel/issues/331
 INIT_CLIENT:
 	hub, err := c.getRegistryClient(opts.Registry, opts.Username, opts.Password)
 	if err != nil {
@@ -128,7 +128,7 @@ func (c *DefaultClient) Digest(opts Opts) (string, error) {
 		return "", ErrTagNotSupplied
 	}
 
-	// fallback to HTTP if the registry doesn't speak HTTPS https://github.com/meck93/keel/issues/331
+	// fallback to HTTP if the registry doesn't speak HTTPS https://github.com/keel-hq/keel/issues/331
 INIT_CLIENT:
 	hub, err := c.getRegistryClient(opts.Registry, opts.Username, opts.Password)
 	if err != nil {
