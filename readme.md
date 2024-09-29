@@ -18,9 +18,6 @@
 
 # Keel - automated Kubernetes deployments for the rest of us
 
-- Website [https://keel.sh](https://keel.sh)
-- Slack - [kubernetes.slack.com](https://kubernetes.slack.com) look for channel #keel
-
 Keel is a tool for automating [Kubernetes](https://kubernetes.io/) deployment updates. Keel is stateless, robust and lightweight.
 
 Keel provides several key features:
@@ -43,46 +40,15 @@ Keel provides several key features:
   <a href="https://keel.sh" target="_blank"><img width="700"src="https://keel.sh/img/keel_high_level.png"></a>
 </p>
 
-### Support
-
-Support Keel's development by:
-
-- Star this repository
-- [Follow on Twitter](https://twitter.com/keel_hq)
-
 ### Helm quick start
 
 Prerequisites:
 
-- [Helm](https://docs.helm.sh/using_helm/#installing-helm)
 - Kubernetes
 
-You need to add this Chart repo to Helm:
+[Deployment](./deployment/README.md)
 
-```bash
-helm repo add keel https://charts.keel.sh
-helm repo update
-```
-
-Install through Helm (with Helm provider enabled by default):
-
-```bash
-helm upgrade --install keel --namespace=kube-system keel/keel
-```
-
-If you work mostly with regular Kubernetes manifests, you can install Keel without Helm provider support:
-
-```bash
-helm upgrade --install keel --namespace=keel keel/keel --set helmProvider.enabled="false"
-```
-
-To install for Helm v3, set helmProvider.version="v3" (default is "v2"):
-
-```bash
-helm install keel keel/keel --set helmProvider.version="v3"
-```
-
-That's it, see [Configuration](https://github.com/keel-hq/keel#configuration) section now.
+[Configuration](https://github.com/keel-hq/keel#configuration)
 
 ### Quick Start
 
@@ -129,23 +95,11 @@ No additional configuration is required. Enabling continuous delivery for your w
 
 ### Documentation
 
-Documentation is viewable on the Keel Website:
-
-[https://keel.sh/docs/#introduction](https://keel.sh/docs/#introduction)
-
-### Contributing
-
-Before starting to work on some big or medium features - raise an issue [here](https://github.com/keel-hq/keel/issues) so we can coordinate our efforts.
-
-We use pull requests, so:
-
-1. Fork this repository
-2. Create a branch on your local copy with a sensible name
-3. Push to your fork and open a pull request
+Documentation is viewable [here](./documentation.md)
 
 ### Developing Keel
 
-If you wish to work on Keel itself, you will need Go 1.12+ installed. Make sure you put Keel into correct Gopath and `go build` (dependency management is done through [dep](https://github.com/golang/dep)).
+If you wish to work on Keel itself, you will need Go 1.23+ installed. Make sure you put Keel into correct Gopath and `go build` (dependency management is done through [dep](https://github.com/golang/dep)).
 
 To test Keel while developing:
 
