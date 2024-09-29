@@ -10,40 +10,47 @@
 </template>
 
 <script>
-
 const tooltip = [
   'x*y',
   (x, y) => ({
     name: x,
-    value: y
-  })
+    value: y,
+  }),
 ]
 
-const scale = [{
-  dataKey: 'x',
-  min: 2
-}, {
-  dataKey: 'y',
-  title: 'Date',
-  min: 1,
-  max: 7
-}]
+const scale = [
+  {
+    dataKey: 'x',
+    min: 2,
+  },
+  {
+    dataKey: 'y',
+    title: 'Date',
+    min: 1,
+    max: 7,
+  },
+]
 
 export default {
   name: 'MiniBar',
-  data () {
+  data() {
     return {
       tooltip,
       scale,
-      height: 100
+      height: 100,
     }
   },
   props: {
-    data: Array
-  }
+    data: {
+      type: Array,
+      default: function () {
+        return []
+      },
+    },
+  },
 }
 </script>
 
 <style lang="less" scoped>
-  @import "chart";
+@import 'chart';
 </style>

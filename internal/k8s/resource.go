@@ -369,7 +369,7 @@ type Status struct {
 	// pods that are still required for the deployment to have 100% available capacity. They may
 	// either be pods that are running but not yet available or pods that still have not been created.
 	// +optional
-	UnavailableReplicas int32 `json:"unavailableReplica"`
+	UnavailableReplicas int32 `json:"unavailableReplicas"`
 }
 
 func (r *GenericResource) GetStatus() Status {

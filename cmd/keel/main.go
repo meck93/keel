@@ -39,12 +39,8 @@ import (
 
 	// notification extensions
 	"github.com/keel-hq/keel/extension/notification/auditor"
-	_ "github.com/keel-hq/keel/extension/notification/discord"
-	_ "github.com/keel-hq/keel/extension/notification/hipchat"
 	_ "github.com/keel-hq/keel/extension/notification/mail"
-	_ "github.com/keel-hq/keel/extension/notification/mattermost"
 	_ "github.com/keel-hq/keel/extension/notification/slack"
-	_ "github.com/keel-hq/keel/extension/notification/teams"
 	_ "github.com/keel-hq/keel/extension/notification/webhook"
 
 	// credentials helpers
@@ -53,7 +49,6 @@ import (
 	secretsCredentialsHelper "github.com/keel-hq/keel/extension/credentialshelper/secrets"
 
 	// bots
-	_ "github.com/keel-hq/keel/bot/hipchat"
 	_ "github.com/keel-hq/keel/bot/slack"
 
 	log "github.com/sirupsen/logrus"

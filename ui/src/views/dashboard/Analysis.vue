@@ -85,7 +85,7 @@
 
     <!-- <a-row :gutter="24"> -->
     <a-card
-      style="margin-top: 24px margin-bot: 24px"
+      style="margin-top: 24px; margin-bottom: 24px"
       :bordered="false"
       title="Kubernetes Cluster Resources">
 
@@ -295,18 +295,18 @@ export default {
       if (this.filter === '') {
         return this.resources
       }
-      const filter = this.filter
+      const filter = this.filter.toLowerCase()
       return this.resources.reduce(function (filtered, resource) {
-        if (resource.identifier.includes(filter)) {
+        if (resource.identifier.toLowerCase().includes(filter)) {
           filtered.push(resource)
           return filtered
-        } else if (resource.namespace.includes(filter)) {
+        } else if (resource.namespace.toLowerCase().includes(filter)) {
           filtered.push(resource)
           return filtered
-        } else if (resource.policy.includes(filter)) {
+        } else if (resource.policy.toLowerCase().includes(filter)) {
           filtered.push(resource)
           return filtered
-        } else if (resource.provider.includes(filter)) {
+        } else if (resource.provider.toLowerCase().includes(filter)) {
           filtered.push(resource)
           return filtered
         } else {
@@ -314,7 +314,7 @@ export default {
           var arrayLength = resource.images.length
           const images = resource.images
           for (var i = 0; i < arrayLength; i++) {
-            if (images[i].includes(filter)) {
+            if (images[i].toLowerCase().includes(filter)) {
               filtered.push(resource)
               return filtered
             }
@@ -513,7 +513,6 @@ export default {
 
   .antd-pro-pages-dashboard-analysis-twoColLayout {
     position: relative;
-    display: flex;
     display: block;
     flex-flow: row wrap;
 

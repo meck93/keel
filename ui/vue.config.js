@@ -1,7 +1,23 @@
+const crypto = require('crypto')
+
+/**
+ * The MD4 algorithm is not available anymore in Node.js 17+ (because of library SSL 3).
+ * In that case, silently replace MD4 by the MD5 algorithm.
+ */
+try {
+  crypto.createHash('md4')
+} catch (e) {
+  console.warn('Crypto "MD4" is not supported anymore by this Node.js version')
+  const origCreateHash = crypto.createHash
+  crypto.createHash = (alg, opts) => {
+    return origCreateHash(alg === 'md4' ? 'md5' : alg, opts)
+  }
+}
+
 const path = require('path')
 const webpack = require('webpack')
 
-function resolve (dir) {
+function resolve(dir) {
   return path.join(__dirname, dir)
 }
 
@@ -24,8 +40,8 @@ module.exports = {
   configureWebpack: {
     plugins: [
       // Ignore all locale files of moment.js
-      new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
-    ]
+      new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+    ],
   },
 
   chainWebpack: (config) => {
@@ -51,7 +67,7 @@ module.exports = {
       .use('file-loader')
       .loader('file-loader')
       .options({
-        name: 'assets/[name].[hash:8].[ext]'
+        name: 'assets/[name].[hash:8].[ext]',
       })
     /* svgRule.oneOf('inline')
       .resourceQuery(/inline/)
@@ -73,26 +89,25 @@ module.exports = {
       less: {
         modifyVars: {
           /* less 变量覆盖，用于自定义 ant design 主题 */
-
           /*
           'primary-color': '#F5222D',
           'link-color': '#F5222D',
           'border-radius-base': '4px',
           */
         },
-        javascriptEnabled: true
-      }
-    }
+        javascriptEnabled: true,
+      },
+    },
   },
 
   devServer: {
     // development server port 8000
-    port: 8000
+    port: 8000,
   },
 
   // disable source map in production
   productionSourceMap: false,
   lintOnSave: undefined,
   // babel-loader no-ignore node_modules/*
-  transpileDependencies: []
+  transpileDependencies: [],
 }

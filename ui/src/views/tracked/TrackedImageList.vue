@@ -100,27 +100,27 @@ export default {
       if (this.filter === '') {
         return this.images
       }
-      const filter = this.filter
+      const filter = this.filter.toLowerCase()
       return this.images.reduce(function (filtered, image) {
-        if (image.image.includes(filter)) {
+        if (image.image.toLowerCase().includes(filter)) {
           filtered.push(image)
           return filtered
-        } else if (image.namespace.includes(filter)) {
+        } else if (image.namespace.toLowerCase().includes(filter)) {
           filtered.push(image)
           return filtered
-        } else if (image.policy.includes(filter)) {
+        } else if (image.policy.toLowerCase().includes(filter)) {
           filtered.push(image)
           return filtered
-        } else if (image.trigger.includes(filter)) {
+        } else if (image.trigger.toLowerCase().includes(filter)) {
           filtered.push(image)
           return filtered
-        } else if (image.pollSchedule.includes(filter)) {
+        } else if (image.pollSchedule.toLowerCase().includes(filter)) {
           filtered.push(image)
           return filtered
-        } else if (image.trigger.includes(filter)) {
+        } else if (image.trigger.toLowerCase().includes(filter)) {
           filtered.push(image)
           return filtered
-        } else if (image.registry.includes(filter)) {
+        } else if (image.registry.toLowerCase().includes(filter)) {
           filtered.push(image)
           return filtered
         }

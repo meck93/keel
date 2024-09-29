@@ -1,0 +1,9 @@
+categories:
+  - title: 🚀 Features and ✨ Enhancements
+    label: enhancement
+  - title: 🐛 Bugfixes
+    label: bug
+change-template: '* $TITLE (#$NUMBER) by @$AUTHOR'
+template: |
+  ## What's Changed
+  $CHANGES

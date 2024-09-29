@@ -18,26 +18,26 @@
 
 # Keel - automated Kubernetes deployments for the rest of us
 
-* Website [https://keel.sh](https://keel.sh)
-* Slack - [kubernetes.slack.com](https://kubernetes.slack.com) look for channel #keel
+- Website [https://keel.sh](https://keel.sh)
+- Slack - [kubernetes.slack.com](https://kubernetes.slack.com) look for channel #keel
 
 Keel is a tool for automating [Kubernetes](https://kubernetes.io/) deployment updates. Keel is stateless, robust and lightweight.
 
 Keel provides several key features:
 
-* __[Kubernetes](https://kubernetes.io/) and [Helm](https://helm.sh) providers__ - Keel has direct integrations with Kubernetes and Helm.
+- **[Kubernetes](https://kubernetes.io/) and [Helm](https://helm.sh) providers** - Keel has direct integrations with Kubernetes and Helm.
 
-* __No CLI/API__ - tired of `f***ctl` for everything? Keel doesn't have one. Gets job done through labels, annotations, charts.
+- **No CLI/API** - tired of `f***ctl` for everything? Keel doesn't have one. Gets job done through labels, annotations, charts.
 
-* __Semver policies__ - specify update policy for each deployment/Helm release individually.
+- **Semver policies** - specify update policy for each deployment/Helm release individually.
 
-* __Automatic [Google Container Registry](https://cloud.google.com/container-registry/) configuration__ - Keel automatically sets up topic and subscriptions for your deployment images by periodically scanning your environment.
+- **Automatic [Google Container Registry](https://cloud.google.com/container-registry/) configuration** - Keel automatically sets up topic and subscriptions for your deployment images by periodically scanning your environment.
 
-* __[Native, DockerHub, Quay and Azure container registry webhooks](https://keel.sh/docs/#triggers) support__ -  once webhook is received impacted deployments will be identified and updated.
+- **[Native, DockerHub, Quay and Azure container registry webhooks](https://keel.sh/docs/#triggers) support** - once webhook is received impacted deployments will be identified and updated.
 
-*  __[Polling](https://keel.sh/docs/#polling)__ - when webhooks and pubsub aren't available - Keel can still be useful by checking Docker Registry for new tags (if current tag is semver) or same tag SHA digest change (ie: `latest`).
+- **[Polling](https://keel.sh/docs/#polling)** - when webhooks and pubsub aren't available - Keel can still be useful by checking Docker Registry for new tags (if current tag is semver) or same tag SHA digest change (ie: `latest`).
 
-* __Notifications__ - out of the box Keel has Slack, Hipchat, Mattermost and standard webhook notifications, more info [here](https://keel.sh/docs/#notifications)
+- **Notifications** - out of the box Keel has Slack and standard webhook notifications, more info [here](https://keel.sh/docs/#notifications)
 
 <p align="center">
   <a href="https://keel.sh" target="_blank"><img width="700"src="https://keel.sh/img/keel_high_level.png"></a>
@@ -46,20 +46,21 @@ Keel provides several key features:
 ### Support
 
 Support Keel's development by:
-* Star this repository
-* [Follow on Twitter](https://twitter.com/keel_hq)
+
+- Star this repository
+- [Follow on Twitter](https://twitter.com/keel_hq)
 
 ### Helm quick start
 
 Prerequisites:
 
-* [Helm](https://docs.helm.sh/using_helm/#installing-helm)
-* Kubernetes
+- [Helm](https://docs.helm.sh/using_helm/#installing-helm)
+- Kubernetes
 
 You need to add this Chart repo to Helm:
 
 ```bash
-helm repo add keel https://charts.keel.sh 
+helm repo add keel https://charts.keel.sh
 helm repo update
 ```
 
@@ -72,13 +73,13 @@ helm upgrade --install keel --namespace=kube-system keel/keel
 If you work mostly with regular Kubernetes manifests, you can install Keel without Helm provider support:
 
 ```bash
-helm upgrade --install keel --namespace=keel keel/keel --set helmProvider.enabled="false" 
+helm upgrade --install keel --namespace=keel keel/keel --set helmProvider.enabled="false"
 ```
 
 To install for Helm v3, set helmProvider.version="v3" (default is "v2"):
 
 ```bash
-helm install keel keel/keel --set helmProvider.version="v3" 
+helm install keel keel/keel --set helmProvider.version="v3"
 ```
 
 That's it, see [Configuration](https://github.com/keel-hq/keel#configuration) section now.
@@ -100,10 +101,10 @@ Once Keel is deployed, you only need to specify update policy on your deployment
 ```yaml
 apiVersion: apps/v1
 kind: Deployment
-metadata: 
+metadata:
   name: wd
   namespace: default
-  labels: 
+  labels:
     name: "wd"
   annotations:
     keel.sh/policy: minor # <-- policy name according to https://semver.org/
@@ -113,11 +114,11 @@ spec:
     metadata:
       name: wd
       labels:
-        app: wd        
+        app: wd
     spec:
-      containers:                    
+      containers:
         - image: karolisr/webhook-demo:0.0.8
-          imagePullPolicy: Always            
+          imagePullPolicy: Always
           name: wd
           command: ["/bin/webhook-demo"]
           ports:
@@ -132,10 +133,9 @@ Documentation is viewable on the Keel Website:
 
 [https://keel.sh/docs/#introduction](https://keel.sh/docs/#introduction)
 
-
 ### Contributing
 
-Before starting to work on some big or medium features - raise an issue [here](https://github.com/keel-hq/keel/issues) so we can coordinate our efforts. 
+Before starting to work on some big or medium features - raise an issue [here](https://github.com/keel-hq/keel/issues) so we can coordinate our efforts.
 
 We use pull requests, so:
 
@@ -145,14 +145,14 @@ We use pull requests, so:
 
 ### Developing Keel
 
-If you wish to work on Keel itself, you will need Go 1.12+ installed. Make sure you put Keel into correct Gopath and `go build` (dependency management is done through [dep](https://github.com/golang/dep)). 
+If you wish to work on Keel itself, you will need Go 1.12+ installed. Make sure you put Keel into correct Gopath and `go build` (dependency management is done through [dep](https://github.com/golang/dep)).
 
 To test Keel while developing:
 
 1. Launch a Kubernetes cluster like Minikube or Docker for Mac with Kubernetes.
 2. Change config to use it: `kubectl config use-context docker-for-desktop`
-3. Build Keel from `cmd/keel` directory. 
-4. Start Keel with: `keel --no-incluster`. This will use Kubeconfig from your home. 
+3. Build Keel from `cmd/keel` directory.
+4. Start Keel with: `keel --no-incluster`. This will use Kubeconfig from your home.
 
 ### Running unit tests
 
@@ -171,6 +171,7 @@ make test
 ### Running e2e tests
 
 Prerequisites:
+
 - configured kubectl + kubeconfig
 - a running cluster (test suite will create testing namespaces and delete them after tests)
 - Go environment (will compile Keel before running)

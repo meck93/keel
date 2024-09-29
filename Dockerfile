@@ -1,4 +1,4 @@
-FROM golang:1.20.5
+FROM golang:1.23.1
 COPY . /go/src/github.com/keel-hq/keel
 WORKDIR /go/src/github.com/keel-hq/keel
 RUN make install
