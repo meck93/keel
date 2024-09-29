@@ -17,7 +17,7 @@ try {
 const path = require('path')
 const webpack = require('webpack')
 
-function resolve(dir) {
+function resolve (dir) {
   return path.join(__dirname, dir)
 }
 
@@ -40,8 +40,8 @@ module.exports = {
   configureWebpack: {
     plugins: [
       // Ignore all locale files of moment.js
-      new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
-    ],
+      new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
+    ]
   },
 
   chainWebpack: (config) => {
@@ -67,7 +67,7 @@ module.exports = {
       .use('file-loader')
       .loader('file-loader')
       .options({
-        name: 'assets/[name].[hash:8].[ext]',
+        name: 'assets/[name].[hash:8].[ext]'
       })
     /* svgRule.oneOf('inline')
       .resourceQuery(/inline/)
@@ -95,19 +95,19 @@ module.exports = {
           'border-radius-base': '4px',
           */
         },
-        javascriptEnabled: true,
-      },
-    },
+        javascriptEnabled: true
+      }
+    }
   },
 
   devServer: {
     // development server port 8000
-    port: 8000,
+    port: 8000
   },
 
   // disable source map in production
   productionSourceMap: false,
   lintOnSave: undefined,
   // babel-loader no-ignore node_modules/*
-  transpileDependencies: [],
+  transpileDependencies: []
 }

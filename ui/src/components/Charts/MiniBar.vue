@@ -14,30 +14,30 @@ const tooltip = [
   'x*y',
   (x, y) => ({
     name: x,
-    value: y,
-  }),
+    value: y
+  })
 ]
 
 const scale = [
   {
     dataKey: 'x',
-    min: 2,
+    min: 2
   },
   {
     dataKey: 'y',
     title: 'Date',
     min: 1,
-    max: 7,
-  },
+    max: 7
+  }
 ]
 
 export default {
   name: 'MiniBar',
-  data() {
+  data () {
     return {
       tooltip,
       scale,
-      height: 100,
+      height: 100
     }
   },
   props: {
@@ -45,9 +45,9 @@ export default {
       type: Array,
       default: function () {
         return []
-      },
-    },
-  },
+      }
+    }
+  }
 }
 </script>
 

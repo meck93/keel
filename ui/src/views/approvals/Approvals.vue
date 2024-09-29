@@ -61,12 +61,14 @@
             Rejected
             <a-progress :percent="100" :showInfo="false" status="exception" />
           </span>
-          <span v-else-if="approval.votesReceived == approval.votesRequired"
-            >Complete
+          <span
+            v-else-if="approval.votesReceived == approval.votesRequired"
+          >Complete
             <a-progress :percent="100" :showInfo="false" />
           </span>
-          <span v-else
-            >Collecting...
+          <span
+            v-else
+          >Collecting...
             <a-progress :percent="getProgress(approval)" :showInfo="false" status="active" />
           </span>
         </span>
@@ -132,9 +134,9 @@ export default {
   name: 'ApprovalsList',
   components: {
     HeadInfo,
-    CountDown,
+    CountDown
   },
-  data() {
+  data () {
     return {
       selectedRowKeys: [],
       selectedRows: [],
@@ -146,86 +148,86 @@ export default {
         getCheckboxProps: (record) => ({
           props: {
             disabled: record.rejected || record.archived,
-            name: record.id,
-          },
-        }),
+            name: record.id
+          }
+        })
       },
       columns: [
         {
           dataIndex: 'updated',
           key: 'updated',
           title: 'Last Activity',
-          scopedSlots: { customRender: 'updated' },
+          scopedSlots: { customRender: 'updated' }
         },
         {
           dataIndex: 'provider',
           key: 'provider',
-          title: 'Provider',
+          title: 'Provider'
         },
         {
           title: 'Identifier',
           dataIndex: 'identifier',
-          key: 'identifier',
+          key: 'identifier'
         },
         {
           title: 'Votes',
           dataIndex: 'votes',
           key: 'votes',
-          scopedSlots: { customRender: 'votes' },
+          scopedSlots: { customRender: 'votes' }
         },
         {
           title: 'Delta',
           key: 'delta',
           dataIndex: 'delta',
-          scopedSlots: { customRender: 'delta' },
+          scopedSlots: { customRender: 'delta' }
         },
         {
           title: 'Status',
           key: 'status',
           dataIndex: 'status',
           width: 200,
-          scopedSlots: { customRender: 'status' },
+          scopedSlots: { customRender: 'status' }
         },
         {
           title: 'Expires In',
           key: 'deadline',
           dataIndex: 'deadline',
-          scopedSlots: { customRender: 'deadline' },
+          scopedSlots: { customRender: 'deadline' }
         },
         {
           title: 'Action',
           key: 'action',
-          scopedSlots: { customRender: 'action' },
-        },
+          scopedSlots: { customRender: 'action' }
+        }
       ],
       approvals: [],
-      filter: '',
+      filter: ''
     }
   },
 
   watch: {
-    '$store.state.approvals.approvals'(approvals) {
+    '$store.state.approvals.approvals' (approvals) {
       this.approvals = approvals
-    },
+    }
   },
 
-  activated() {
+  activated () {
     this.$store.dispatch('GetApprovals')
   },
   computed: {
-    hasSelected() {
+    hasSelected () {
       return this.selectedRowKeys.length > 0
-    },
+    }
   },
   methods: {
-    onSearch(value) {
+    onSearch (value) {
       this.filter = value
     },
-    onSearchChange(e) {
+    onSearchChange (e) {
       this.filter = e.target._value
     },
 
-    filtered() {
+    filtered () {
       if (this.filter === '') {
         return this.approvals
       }
@@ -248,102 +250,102 @@ export default {
       }, [])
     },
 
-    refresh() {
+    refresh () {
       this.$store.dispatch('GetApprovals')
       this.$notification.info({
         message: 'Updating..',
-        description: `fetching approvals`,
+        description: `fetching approvals`
       })
     },
 
-    isComplete(approval) {
+    isComplete (approval) {
       return approval.archived || approval.rejected || approval.votesReceived >= approval.votesRequired
     },
 
-    deadline(approval) {
+    deadline (approval) {
       return new Date(approval.deadline)
     },
 
-    getProgress(approval) {
+    getProgress (approval) {
       if (approval.votesReceived === 0) {
         return 0
       }
       return (approval.votesReceived * 100) / approval.votesRequired
     },
 
-    approve(approval) {
+    approve (approval) {
       const that = this
       this.$confirm({
         title: 'Confirm update',
         content: `are you sure want to approve update for ${approval.identifier}?`,
-        onOk() {
+        onOk () {
           that.updateApproval(approval, 'approve')
         },
-        onCancel() {},
+        onCancel () {}
       })
     },
 
-    remove(approval) {
+    remove (approval) {
       const that = this
       this.$confirm({
         title: 'Confirm deletion',
         content: `are you sure want to delete approval ${approval.identifier}?`,
-        onOk() {
+        onOk () {
           that.updateApproval(approval, 'delete')
         },
-        onCancel() {},
+        onCancel () {}
       })
     },
 
-    archive(approval) {
+    archive (approval) {
       const that = this
       this.$confirm({
         title: 'Confirm archive',
         content: `are you sure want to archive approval ${approval.identifier}?`,
-        onOk() {
+        onOk () {
           that.updateApproval(approval, 'archive')
         },
-        onCancel() {},
+        onCancel () {}
       })
     },
 
-    bulkApprove() {
+    bulkApprove () {
       const that = this
       this.$confirm({
         title: 'Confirm update',
         content: `Are you sure want to approve the selected updates?`,
-        onOk() {
+        onOk () {
           for (let i = 0; i < that.selectedRows.length; i++) {
             if (!that.selectedRows[i].rejected && !that.selectedRows[i].archived) {
               that.updateApproval(that.selectedRows[i], 'approve')
             }
           }
         },
-        onCancel() {},
+        onCancel () {}
       })
     },
-    bulkReject() {
+    bulkReject () {
       const that = this
       this.$confirm({
         title: 'Confirm update',
         content: `Are you sure want to reject the selected updates?`,
-        onOk() {
+        onOk () {
           for (let i = 0; i < that.selectedRows.length; i++) {
             if (!that.selectedRows[i].rejected && !that.selectedRows[i].archived) {
               that.updateApproval(that.selectedRows[i], 'reject')
             }
           }
         },
-        onCancel() {},
+        onCancel () {}
       })
     },
 
-    updateApproval(approval, action) {
+    updateApproval (approval, action) {
       const payload = {
         id: approval.id,
         identifier: approval.identifier,
         action: action,
-        voter: 'admin-web-ui',
+        voter: 'admin-web-ui'
       }
 
       let msg = ''
@@ -375,23 +377,23 @@ export default {
         if (error === null) {
           this.$notification.success({
             message: msg,
-            description: desc,
+            description: desc
           })
         } else {
           this.$notification['error']({
             message: `${action} error`,
             description: `Error: ${error.body}`,
-            duration: 4,
+            duration: 4
           })
         }
         this.$store.dispatch('GetApprovals')
       })
     },
 
-    reject(approval) {
+    reject (approval) {
       this.updateApproval(approval, 'reject')
-    },
-  },
+    }
+  }
 }
 </script>
 

@@ -90,7 +90,7 @@ run-ui:
 
 build-ui:
 	docker build -t keelhq/keel:ui -f Dockerfile .
-	docker push keelhq/keel:ui
+	docker push meck93/keel:ui
 
 run-debug: install
 	DEBUG=true keel --no-incluster

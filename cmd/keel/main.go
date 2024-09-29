@@ -8,8 +8,8 @@ import (
 
 	"context"
 
+	kingpin "github.com/alecthomas/kingpin/v2"
 	"github.com/prometheus/client_golang/prometheus"
-	kingpin "gopkg.in/alecthomas/kingpin.v2"
 	kube "k8s.io/client-go/kubernetes"
 	"k8s.io/client-go/rest"
 
@@ -33,7 +33,6 @@ import (
 	"github.com/keel-hq/keel/registry"
 	"github.com/keel-hq/keel/secrets"
 	"github.com/keel-hq/keel/trigger/poll"
-	"github.com/keel-hq/keel/trigger/pubsub"
 	"github.com/keel-hq/keel/types"
 	"github.com/keel-hq/keel/version"
 
@@ -58,10 +57,7 @@ import (
 
 // gcloud pubsub related config
 const (
-	EnvTriggerPubSub = "PUBSUB" // set to 1 or something to enable pub/sub trigger
 	EnvTriggerPoll   = "POLL"   // set to 0 to disable poll trigger
-	EnvProjectID     = "PROJECT_ID"
-	EnvClusterName   = "CLUSTER_NAME"
 	EnvDataDir       = "XDG_DATA_HOME"
 	EnvHelm3Provider = "HELM3_PROVIDER" // helm3 provider
 	EnvUIDir         = "UI_DIR"
@@ -374,29 +370,6 @@ func setupTriggers(ctx context.Context, opts *TriggerOpts) (teardown func()) {
 			}).Fatal("trigger server stopped")
 		}
 	}()
-
-	// checking whether pubsub (GCR) trigger is enabled
-	if os.Getenv(EnvTriggerPubSub) != "" {
-		projectID := os.Getenv(EnvProjectID)
-		if projectID == "" {
-			log.Fatalf("main.setupTriggers: project ID env variable not set")
-			return
-		}
-
-		ps, err := pubsub.NewPubsubSubscriber(&pubsub.Opts{
-			ProjectID: projectID,
-			Providers: opts.providers,
-		})
-		if err != nil {
-			log.WithFields(log.Fields{
-				"error": err,
-			}).Fatal("main.setupTriggers: failed to create gcloud pubsub subscriber")
-			return
-		}
-
-		subManager := pubsub.NewDefaultManager(os.Getenv(EnvClusterName), projectID, opts.providers, ps)
-		go subManager.Start(ctx)
-	}
 
 	if os.Getenv(EnvTriggerPoll) != "0" || os.Getenv(EnvTriggerPoll) != "false" {
 

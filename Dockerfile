@@ -3,7 +3,7 @@ COPY . /go/src/github.com/keel-hq/keel
 WORKDIR /go/src/github.com/keel-hq/keel
 RUN make install
 
-FROM node:9.11.1-alpine
+FROM node:16-alpine
 WORKDIR /app
 COPY ui /app
 RUN yarn
