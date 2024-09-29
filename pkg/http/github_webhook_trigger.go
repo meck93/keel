@@ -3,11 +3,12 @@ package http
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/keel-hq/keel/types"
-	"github.com/prometheus/client_golang/prometheus"
 	"net/http"
 	"strings"
 	"time"
+
+	"github.com/keel-hq/keel/types"
+	"github.com/prometheus/client_golang/prometheus"
 
 	log "github.com/sirupsen/logrus"
 )
@@ -120,9 +121,9 @@ func (s *TriggerServer) githubHandler(resp http.ResponseWriter, req *http.Reques
 			return
 		}
 
-		if payload.RegistryPackage.PackageType != "docker" {
+		if payload.RegistryPackage.PackageType != "CONTAINER" {
 			resp.WriteHeader(http.StatusBadRequest)
-			fmt.Fprintf(resp, "registry package type was not docker")
+			fmt.Fprintf(resp, "registry package type was not CONTAINER")
 		}
 
 		if payload.Repository.FullName == "" { // github package name
