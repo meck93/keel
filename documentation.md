@@ -134,11 +134,9 @@ AWS_REGION=<region>
 # Enable outgoing webhooks
 WEBHOOK_ENDPOINT=<https://your-endpoint>
 
-# Enable mattermost endpoint
-MATTERMOST_ENDPOINT=<mattermost incoming webhook endpoint>
-
 # Slack configuration
-SLACK_TOKEN
+SLACK_APP_TOKEN
+SLACK_BOT_TOKEN
 
 SLACK_CHANNELS=<slack channel, defaults to "general">
 SLACK_APPROVALS_CHANNEL=<slack approvals channel, defaults to "general">
@@ -160,22 +158,12 @@ INSECURE_REGISTRY="true"
 
 ### Enabling admin dashboard
 
-::: warning
-Follow [these instruction on how to enable admin UI](/docs/#enabling-admin-dashboard). Admin dashboard hasn't been fully released yet, it's only available through the `latest` tag or if you compile Keel from the `master` branch.
-:::
+Follow [these instruction on how to enable admin UI](/docs/#enabling-admin-dashboard). 
 
 To enable admin dashboard, you will need to:
 
 1. Set BASIC_AUTH_USER and BASIC_AUTH_PASSWORD environment variables
 2. Create a service so you can access it. Keel UI and API are accessible on port 9300 by default.
-
-To access Keel admin dashboard without configuring public IP, you can use [webhookrelay.com](https://webhookrelay.com) tunnels. There's a default template to generate Keel configuration with tunnels enabled. First get a [token](https://my.webhookrelay.com/tunnels) & [tunnel](https://my.webhookrelay.com/tunnels), then deploy through [sunstone.dev](https://about.sunstone.dev):
-
-```bash
-kubectl apply -f https://sunstone.dev/keel?namespace=default&username=admin&password=admin&relay_key=TOKEN_KEY&relay_secret=TOKEN_SECRET&relay_tunnel=TUNNEL_NAME&tag=latest
-```
-
-Then, access it through the tunnel address such as your-subdomain.webrelay.io:
 
 ![Keel Web UI](/img/keel_ui.png)
 
@@ -863,7 +851,7 @@ Slack - commands like:
 - `keel approve <identifier>` - approve specified request.
 - `keel reject <identifier>` - reject specified request.
 
-Make sure you have set `export SLACK_TOKEN=<your slack token here>` environment variable for Keel deployment.
+Make sure you have set the environment variables `export SLACK_APP_TOKEN=<xapp-*>` and `export SLACK_BOT_TOKEN=<xoxb-*>` for Keel deployment.
 
 If you wish to specify a special channel for approval requests, supply `SLACK_APPROVALS_CHANNEL=<approvals channel name>` environment variable and then invite Keel bot to that channel.
 
@@ -924,7 +912,7 @@ Slack configuration can be sometimes quite confusing. If something has changed, 
 
 #### Step 1: adding bot app and getting token
 
-Go to your Slack apps page: https://[your-slack-community].slack.com/apps/A0F7YS25R-bots?page=1
+Follow this [guide](https://api.slack.com/tutorials/tracks/getting-a-token) to create a Slack app and get the necessary tokens.
 
 ![Slack bots](/img/docs/slack-bots.png)
 
@@ -936,7 +924,8 @@ Set name to Keel
 
 Use provided token as an environment variable in Keel's deployment:
 
-`SLACK_TOKEN=token`
+`SLACK_APP_TOKEN=xapp-*`
+`SLACK_BOT_TOKEN=xoxb-*`
 
 ### Approving through Slack example
 
@@ -1097,59 +1086,9 @@ Webhook payload sample:
 
 ### Slack notifications
 
-![Slack notifications](/img/docs/slack-notifications.png)
-
-First, get a Slack token, info about that can be found in the [docs](https://get.slack.help/hc/en-us/articles/215770388-Create-and-regenerate-API-tokens). Then, provide token via **SLACK_TOKEN** environment variable. You should also provide **SLACK_CHANNELS** environment variable with a comma separated list of channels where these notifications should be delivered to.
+First, get a Slack APP & BOT token, info about the token types can be found in the [docs](https://api.slack.com/concepts/token-types#bot). Then, provide the tokens via **SLACK_APP_TOKEN** and **SLACK_BOT_TOKEN** environment variables. You should also provide **SLACK_CHANNELS** environment variable with a comma separated list of channels where these notifications should be delivered to.
 
 Keel will be sending messages when deployment updates succeed or fail.
-
-### HipChat notifications
-
-::: warning
-HipChat documentation is missing, if you are using it, please add some examples.
-:::
-
-### Mattermost notifications
-
-[Mattermost](https://about.mattermost.com/) is an open source Slack alternative, it's written in Go and React.
-
-If you don't have a Mattermost server, you can set one up by using Docker:
-
-```bash
-docker run --name mattermost-preview -d --publish 8065:8065 mattermost/mattermost-preview
-```
-
-Server should be reachable on: http://localhost:8065/
-
-Now, enable "incoming webhooks" in your Mattermost server. Documentation can be found [in the incoming webhooks section](https://docs.mattermost.com/developer/webhooks-incoming.html):
-
-![Mattermost webhooks](/img/docs/mattermost-webhooks.png)
-
-Also, you should enable icon and username override so users know that webhooks are coming from Keel:
-
-![Mattermost username and icon override](/img/docs/mattermost-icon-username.png)
-
-Now, set `MATTERMOST_ENDPOINT` environment variable for Keel with your Mattermost webhook endpoint:
-
-![Mattermost configuration](/img/docs/mattermost-configuration.png)
-
-That's it, Keel notifications for Mattermost enabled:
-
-![Mattermost notification](/img/docs/mattermost-notification.png)
-
-> If you want to override bot's username, you can supply `MATTERMOST_USERNAME=somethingelse` environment variable.
-
-### Teams notifications
-
-MS Teams allows you to [set up a custom incoming webhook](https://docs.microsoft.com/en-us/microsoftteams/platform/webhooks-and-connectors/how-to/connectors-using#setting-up-a-custom-incoming-webhook).
-
-The process linked above results in a webhook url. Pass that to Keel via the `TEAMS_WEBHOOK_URL=https://the.webhook/provided/by/teams` environment variable.
-
-### Discord notifications
-
-Discord allows you to [set up incoming webhooks in a channel](https://support.discord.com/hc/en-us/articles/228383668-Intro-to-Webhooks).
-
-Configure notifications by setting the `DISCORD_WEBHOOK_URL=https://the.webhook/provided/by/discord` environment variable.
 
 ### Notification levels
 
