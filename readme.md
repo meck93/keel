@@ -3,16 +3,8 @@
 </p>
 
 <p align="center">
-  <a href="https://goreportcard.com/report/github.com/keel-hq/keel">
-    <img src="https://goreportcard.com/badge/github.com/keel-hq/keel" alt="Go Report">
-  </a>
-  
-  <a href="https://img.shields.io/docker/pulls/keelhq/keel.svg">
-    <img src="https://img.shields.io/docker/pulls/keelhq/keel.svg" alt="Docker Pulls">
-  </a>
-
-  <a href="https://drone-kr.webrelay.io/meck93/keel">
-    <img src="https://drone-kr.webrelay.io/api/badges/meck93/keel/status.svg" alt="Drone Status">
+  <a href="https://goreportcard.com/report/github.com/meck93/keel">
+    <img src="https://goreportcard.com/badge/github.com/meck93/keel" alt="Go Report">
   </a>
 </p>
 
@@ -40,25 +32,9 @@ Keel provides several key features:
   <a href="https://keel.sh" target="_blank"><img width="700"src="https://keel.sh/img/keel_high_level.png"></a>
 </p>
 
-### Helm quick start
+### Deployment
 
-Prerequisites:
-
-- Kubernetes
-
-[Deployment](./deployment/README.md)
-
-[Configuration](https://github.com/keel-hq/keel#configuration)
-
-### Quick Start
-
-<p align="center">
-  <a href="https://keel.sh" target="_blank"><img width="700"src="https://keel.sh/img/examples/force-workflow.png"></a>
-</p>
-
-A step-by-step guide to install Keel on your Kubernetes cluster is viewable on the Keel website:
-
-[https://keel.sh/examples/#example-1-push-to-deploy](https://keel.sh/examples/#example-1-push-to-deploy)
+A basic Kubernetes deployment template can be found [here](./deployment/README.md)
 
 ### Configuration
 
@@ -68,27 +44,23 @@ Once Keel is deployed, you only need to specify update policy on your deployment
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: wd
-  namespace: default
-  labels:
-    name: "wd"
+  name: hw-deployment
   annotations:
     keel.sh/policy: minor # <-- policy name according to https://semver.org/
     keel.sh/trigger: poll # <-- actively query registry, otherwise defaults to webhooks
 spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: hw
   template:
     metadata:
-      name: wd
       labels:
-        app: wd
+        app.kubernetes.io/name: hw
     spec:
       containers:
-        - image: karolisr/webhook-demo:0.0.8
+        - name: hw
+          image: rancher/hello-world:1.1.2
           imagePullPolicy: Always
-          name: wd
-          command: ["/bin/webhook-demo"]
-          ports:
-            - containerPort: 8090
 ```
 
 No additional configuration is required. Enabling continuous delivery for your workloads has never been this easy!

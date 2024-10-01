@@ -3,21 +3,18 @@ apiVersion: v1
 kind: Namespace
 metadata:
   name: keel
-
 ---
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  name: keel
-  namespace: keel
+  name: keel-service-account
   labels:
     app: keel
-
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
-  name: keel
+  name: keel-cluster-role
 rules:
   - apiGroups:
       - ''
@@ -63,59 +60,47 @@ rules:
       - get
       - create
       - update
-
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
-  name: keel
+  name: keel-cluster-role-binding
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: keel
+  name: keel-cluster-role
 subjects:
   - kind: ServiceAccount
-    name: keel
-    namespace: keel
-
+    name: keel-service-account
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: keel
-  namespace: keel
-  labels:
-    app: keel
+  name: keel-service
 spec:
-  type: LoadBalancer
-  ports:
-    - port: 9300
-      targetPort: 9300
-      protocol: TCP
-      name: keel
   selector:
-    app: keel
-  sessionAffinity: None
-
+    app.kubernetes.io/name: keel
+  ports:
+    - name: http-port
+      port: 9300 # can be changed to 80 if you want to expose Keel via a Ingress
+      protocol: TCP
+      targetPort: 9300
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: keel
-  namespace: keel
-  labels:
-    app: keel
+  name: keel-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: keel
+      app.kubernetes.io/name: keel
   template:
     metadata:
       labels:
-        app: keel
+        app.kubernetes.io/name: keel
     spec:
-      serviceAccountName: keel
+      serviceAccountName: keel-service-account
       imagePullSecrets:
         - name: ghcr-cred
       containers:
@@ -180,15 +165,3 @@ spec:
             requests:
               cpu: 50m
               memory: 64Mi
-
----
-apiVersion: policy/v1
-kind: PodDisruptionBudget
-metadata:
-  name: keel
-  namespace: keel
-spec:
-  maxUnavailable: 1
-  selector:
-    matchLabels:
-      app: keel

@@ -1,15 +1,4 @@
----
-title: Guide
-lang: en-US
-meta:
-  - name: description
-    content: Keel installation instructions
-  - name: keywords
-    content: kubernetes helm manifest install
-sidebar: auto
----
-
-## Introduction
+## Documentation
 
 What is Keel?
 
@@ -158,7 +147,7 @@ INSECURE_REGISTRY="true"
 
 ### Enabling admin dashboard
 
-Follow [these instruction on how to enable admin UI](/docs/#enabling-admin-dashboard). 
+Follow [these instruction on how to enable admin UI](/docs/#enabling-admin-dashboard).
 
 To enable admin dashboard, you will need to:
 
@@ -914,11 +903,10 @@ Slack configuration can be sometimes quite confusing. If something has changed, 
 
 Follow this [guide](https://api.slack.com/tutorials/tracks/getting-a-token) to create a Slack app and get the necessary tokens.
 
-![Slack bots](/img/docs/slack-bots.png)
-
-Set name to Keel
-
-![Slack bot name](/img/docs/slack-bot-name.png)
+1. Create a Slack app according to the guide. Set the app name to `keel`.
+2. Create an APP Token with the scope `connections:write`
+3. Create a bot token
+4. Create a slack channel or use the default **general** channel. Make sure that your bot is invited to the channel.
 
 #### Step 2: supplying token to Keel
 
@@ -933,14 +921,6 @@ Keel will send notifications to your Slack group about pending approvals. Approv
 
 - Approve: `keel approve default/whr:0.4.12`
 - Reject it: `keel reject default/whr:0.4.12`
-
-Example conversation:
-
-![Approvals](/img/docs/approvals.png)
-
-### Approving through Hipchat example
-
-Coming soon...
 
 ### Managing approvals through HTTP endpoint
 
