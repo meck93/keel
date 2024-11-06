@@ -10,7 +10,7 @@ import (
 	log "github.com/sirupsen/logrus"
 )
 
-var expirationDelta = time.Hour * 12
+var expirationDelta = time.Hour * 4
 
 type AuthType int
 

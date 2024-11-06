@@ -1,7 +1,6 @@
 package kubernetes
 
 import (
-	"io/ioutil"
 	"log"
 	"os"
 	"path/filepath"
@@ -112,7 +111,7 @@ func (s *fakeSender) Send(event types.EventNotification) error {
 }
 
 func NewTestingUtils() (*sql.SQLStore, func()) {
-	dir, err := ioutil.TempDir("", "whstoretest")
+	dir, err := os.MkdirTemp("", "whstoretest")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -314,10 +313,10 @@ func TestGetImpactedInit(t *testing.T) {
 		{
 			meta_v1.TypeMeta{},
 			meta_v1.ObjectMeta{
-				Name:      "dep-1",
-				Namespace: "xxxx",
+				Name:        "dep-1",
+				Namespace:   "xxxx",
 				Annotations: map[string]string{types.KeelInitContainerAnnotation: "true"},
-				Labels:    map[string]string{types.KeelPolicyLabel: "all"},
+				Labels:      map[string]string{types.KeelPolicyLabel: "all"},
 			},
 			apps_v1.DeploymentSpec{
 				Template: v1.PodTemplateSpec{
@@ -335,10 +334,10 @@ func TestGetImpactedInit(t *testing.T) {
 		{
 			meta_v1.TypeMeta{},
 			meta_v1.ObjectMeta{
-				Name:      "dep-2",
-				Namespace: "xxxx",
+				Name:        "dep-2",
+				Namespace:   "xxxx",
 				Annotations: map[string]string{types.KeelInitContainerAnnotation: "false"},
-				Labels:    map[string]string{"whatever": "all"},
+				Labels:      map[string]string{"whatever": "all"},
 			},
 			apps_v1.DeploymentSpec{
 				Template: v1.PodTemplateSpec{

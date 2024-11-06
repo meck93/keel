@@ -271,7 +271,7 @@ func response(obj interface{}, statusCode int, err error, resp http.ResponseWrit
 
 // corsHeadersMiddleware - cors middleware
 func corsHeadersMiddleware(rw http.ResponseWriter, r *http.Request, next http.HandlerFunc) {
-	rw.Header().Set("Access-Control-Allow-Origin", "*")
+	rw.Header().Set("Access-Control-Allow-Origin", "*") // TODO: address this issue and make it configurable
 	rw.Header().Set("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE")
 	rw.Header().Set("Access-Control-Allow-Headers",
 		"Accept, Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization")
