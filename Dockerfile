@@ -1,14 +1,14 @@
-FROM golang:1.23.1
+FROM golang:1.23-bookworm
 COPY . /go/src/github.com/keel-hq/keel
 WORKDIR /go/src/github.com/keel-hq/keel
 RUN make install
 
-FROM node:16-alpine
+FROM node:20-alpine
 WORKDIR /app
 COPY ui /app
-RUN yarn
-RUN yarn run lint --no-fix
-RUN yarn run build
+RUN npm install
+RUN npm run lint --no-fix
+RUN npm run build
 
 FROM alpine:latest
 RUN apk --no-cache add ca-certificates

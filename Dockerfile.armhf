@@ -1,9 +1,9 @@
-FROM node:lts-alpine as ui
+FROM node:20-alpine as ui
 WORKDIR /app
 COPY ui /app
-RUN yarn
-RUN yarn run lint --no-fix
-RUN yarn run build
+RUN npm install
+RUN npm run lint --no-fix
+RUN npm run build
 
 FROM arm32v7/debian:buster
 ADD ca-certificates.crt /etc/ssl/certs/
