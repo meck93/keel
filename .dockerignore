@@ -1,0 +1,10 @@
+**/.git
+LICENSE
+compose*
+.github/**
+.gitignore
+readme.md
+documentation.md
+serviceaccount/*
+chart/*
+Dockerfile*
