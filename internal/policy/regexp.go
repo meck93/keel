@@ -5,6 +5,8 @@ import (
 	"regexp"
 	"sort"
 	"strings"
+
+	"github.com/keel-hq/keel/types"
 )
 
 // RegexpPolicy - regular expression based pattern
@@ -60,5 +62,6 @@ func (p *RegexpPolicy) Filter(tags []string) []string {
 	return filtered
 }
 
-func (p *RegexpPolicy) Name() string     { return p.policy }
-func (p *RegexpPolicy) Type() PolicyType { return PolicyTypeRegexp }
+func (p *RegexpPolicy) Name() string           { return p.policy }
+func (p *RegexpPolicy) Type() types.PolicyType { return types.PolicyTypeRegexp }
+func (p *RegexpPolicy) KeepTag() bool          { return false }

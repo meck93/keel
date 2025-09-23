@@ -31,6 +31,8 @@ type Policy interface {
 	ShouldUpdate(current, new string) (bool, error)
 	Name() string
 	Filter(tags []string) []string
+	Type() PolicyType
+	KeepTag() bool
 }
 
 func (i TrackedImage) String() string {
