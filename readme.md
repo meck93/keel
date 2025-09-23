@@ -71,7 +71,7 @@ Documentation is viewable [here](./documentation.md)
 
 ### Developing Keel
 
-If you wish to work on Keel itself, you will need Go 1.23+ installed. Make sure you put Keel into correct Gopath and `go build` (dependency management is done through [dep](https://github.com/golang/dep)).
+If you wish to work on Keel itself, you will need Go 1.25+ installed. Make sure you put Keel into correct Gopath and `go build` (dependency management is done through [dep](https://github.com/golang/dep)).
 
 To test Keel while developing:
 

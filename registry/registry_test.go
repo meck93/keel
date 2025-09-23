@@ -36,14 +36,14 @@ func TestOCIDigest(t *testing.T) {
 	digest, err := client.Digest(Opts{
 		Registry: "https://index.docker.io",
 		Name:     "vaultwarden/server",
-		Tag:      "1.25.1",
+		Tag:      "1.34.3-alpine",
 	})
 
 	if err != nil {
 		t.Errorf("error while getting digest: %s", err)
 	}
 
-	if digest != "sha256:dd8cf61d1997c098cc5686ef3116ca5cfef36f12192c01caa1de79a968397d4c" {
+	if digest != "sha256:d70118b9dafb8588ee2651ceb5df68db27dcbd8e18467722010644ba48d5d6d6" {
 		t.Errorf("unexpected digest: %s", digest)
 	}
 }
@@ -322,8 +322,8 @@ var tagsResp = `{
   }`
 
 func TestGetDockerHubManyTags(t *testing.T) {
-	client := docker.New("https://quay.io", "", "")
-	tags, err := client.Tags("coreos/prometheus-operator")
+	client := docker.New("https://index.docker.io", "", "")
+	tags, err := client.Tags("vaultwarden/server")
 	if err != nil {
 		t.Errorf("error while getting repo: %s", err)
 	}

@@ -131,14 +131,6 @@ SLACK_CHANNELS=<slack channel, defaults to "general">
 SLACK_APPROVALS_CHANNEL=<slack approvals channel, defaults to "general">
 SLACK_BOT_NAME=<slack bot name, defaults to "keel">
 
-# Enable hipchat approvials and notification
-HIPCHAT_TOKEN
-HIPCHAT_CHANNELS
-HIPCHAT_APPROVALS_CHANNEL
-HIPCHAT_APPROVALS_BOT_NAME
-HIPCHAT_APPROVALS_USER_NAME
-HIPCHAT_APPROVALS_PASSWORT
-
 # System wide notification level (webhooks, chat)
 NOTIFICATION_LEVEL="info"
 # Enable insecure registries
