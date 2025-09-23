@@ -6,7 +6,7 @@ import (
 	"strings"
 
 	// "github.com/docker/distribution/digest"
-	"github.com/docker/distribution/reference"
+	"github.com/distribution/reference"
 	"github.com/opencontainers/go-digest"
 )
 
