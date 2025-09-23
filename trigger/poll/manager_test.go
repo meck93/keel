@@ -7,6 +7,7 @@ import (
 	"path/filepath"
 
 	"github.com/keel-hq/keel/approvals"
+	"github.com/keel-hq/keel/internal/policy"
 	"github.com/keel-hq/keel/pkg/store/sql"
 
 	// "github.com/keel-hq/keel/cache/memory"
@@ -59,6 +60,7 @@ func TestCheckDeployment(t *testing.T) {
 				Trigger:      types.TriggerTypePoll,
 				Provider:     "fp",
 				PollSchedule: types.KeelPollDefaultSchedule,
+				Policy:       policy.LegacyPolicyPopulate(imgA),
 			},
 
 			{
@@ -66,6 +68,7 @@ func TestCheckDeployment(t *testing.T) {
 				Image:        imgB,
 				Provider:     "fp",
 				PollSchedule: types.KeelPollDefaultSchedule,
+				Policy:       policy.LegacyPolicyPopulate(imgB),
 			},
 		},
 	}
